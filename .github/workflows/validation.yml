@@ -32,10 +32,10 @@ jobs:
         run: pip install -r tests/requirements.txt
 
       - name: Check address checksum
-        run: python tests/check_checksum.py
+        run: python tests/checksum.py
 
       - name: Check tokens (pull request)
-        run: python tests/check_token.py
+        run: python tests/token.py
         if: github.event_name == 'pull_request'
 
       - name: Check tokens with ethplorer (master)
@@ -43,8 +43,8 @@ jobs:
         run: |
           if [ -z "$ETHPLORER_API_KEY" ] ; then
             echo "Missing ENV variable ETHPLORER_API_KEY"
-            exit 1
+            exit 0
           fi
-          python tests/check_token.py
+          python tests/token.py
         env:
           ETHPLORER_API_KEY: ${{ secrets.ETHPLORER_API_KEY }}
