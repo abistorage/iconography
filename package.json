@@ -8,18 +8,18 @@
     "build"
   ],
   "directories": {
-    "assets": "assets"
+    "assets": "assets",
+    "icons": "icons"
   },
   "scripts": {
-    "gulp": "gulp --gulpfile scripts/gulpfile.js --cwd .",
-    "lint:svg": "svglint src/**/*.svg",
-     "format:optimize": "svgo",
-      "pre-commit": "lint-staged",
-      "optimize:image": "node ./scripts/optimize-image.js",
-      "build": "npx svgo --recursive --folder icons/tokens/ --output svg-dist/",
-      "svg": "npx svgo -f icons/tokens dist/svg --disable=removeViewBox,removeTitle",
-      "lint": "npx svglint svg-dist/*.svg dist/svg/*.svg --ci",
-      "lint:raw": "npx svglint icons/tokens/**/*.svg --ci"
+      "gulp":        "gulp --gulpfile scripts/gulpfile.js --cwd .",
+      "check-svg":   "svglint src/**/*.svg",
+      "pre-commit":  "lint-staged",
+      "opt-image":   "node ./scripts/optimize-image.js",
+      "gen-svg":     "npx svgo --recursive --folder icons/tokens/ --output svg-dist/",
+      "lint-svg":    "npx svgo -f icons/tokens dist/svg --disable=removeViewBox,removeTitle",
+      "format-svg":  "npx svglint svg-dist/*.svg dist/svg/*.svg --ci",
+      "ci-svg":      "npx svglint icons/tokens/**/*.svg --ci"
     },
     "lint-staged": {
       "*.{jpg,jpeg,png,gif}": ["npm run optimize:image", "git add"]
