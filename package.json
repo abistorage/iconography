@@ -1,0 +1,75 @@
+{
+  "name": "iconography",
+  "version": "0.0.0",
+  "description": "image dist",
+  "files": [
+    "dist",
+    "src",
+    "build"
+  ],
+  "directories": {
+    "assets": "assets"
+  },
+  "scripts": {
+    "gulp": "gulp --gulpfile scripts/gulpfile.js --cwd .",
+    "lint:svg": "svglint src/**/*.svg",
+     "format:optimize": "svgo",
+      "pre-commit": "lint-staged",
+      "optimize:image": "node ./scripts/optimize-image.js",
+      "build": "npx svgo --recursive --folder icons/tokens/ --output svg-dist/",
+      "svg": "npx svgo -f icons/tokens dist/svg --disable=removeViewBox,removeTitle",
+      "lint": "npx svglint svg-dist/*.svg dist/svg/*.svg --ci",
+      "lint:raw": "npx svglint icons/tokens/**/*.svg --ci"
+    },
+    "lint-staged": {
+      "*.{jpg,jpeg,png,gif}": ["npm run optimize:image", "git add"]
+    },
+  "author": "The Contributors",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@squoosh/cli": "^0.7.2",
+    "@squoosh/lib": "^0.4.0",
+    "@types/node": "^14.17.33",
+    "husky": "^7.0.4",
+    "lint-staged": "^11.2.6"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.0.2",
+    "cpx": "^1.5.0",
+    "crossenv": "^0.0.2-security",
+    "glob": "^7.2.0",
+    "gulp": "^4.0.2",
+    "gulp-file": "^0.4.0",
+    "gulp-svg-sprite": "^1.5.0",
+    "jest": "^27.3.1",
+    "shx": "^0.3.3",
+    "svg-to-ts": "^7.1.0",
+    "svgo": "^2.8.0",
+    "ts-jest": "^27.0.7",
+    "tslib": "^2.3.1",
+    "typescript": "^4.4.4",
+    "webpack": "^5.62.1",
+    "webpack-cli": "^4.9.1",
+    "zlib": "^1.0.5",
+    "@babel/cli": "7.13.10",
+    "@babel/core": "7.13.10",
+    "babel-plugin-inline-react-svg": "2.0.1",
+    "jsonlint2": "^1.7.1",
+    "rollup": "^2.59.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "svg-path": "^0.2.1",
+    "svg-path-bbox": "^1.0.1",
+    "svglint": "^1.1.0",
+    "svgpath": "^2.3.1"
+  },
+  "keywords": [
+    "svg",
+    "assets",
+    "react",
+    "components",
+    "images",
+    "cryptocurrency",
+    "ethereum",
+    "defi"
+  ]
+}

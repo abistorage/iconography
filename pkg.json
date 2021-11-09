@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "pre-commit": "lint-staged",
+    "optimize:image": "node ./scripts/optimize-image.js",
+  }
+  "lint-staged": {
+    "*.{jpg,jpeg,png,gif}": ["npm run optimize:image", "git add"]
+  }
+}

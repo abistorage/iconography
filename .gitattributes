@@ -1,0 +1,12 @@
+*.png diff=exif
+*.jpg diff=exif
+*.svg diff=exif
+
+/.yarn/releases/** binary
+/.yarn/plugins/** binary
+git-hash export-subst
+*.sh text eol=lf
+security.txt ident
+LAST_COMMIT export-subst
+date*.txt filter=dater
+CODENOTIFY linguist-language=CODEOWNERS
